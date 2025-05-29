@@ -40,9 +40,11 @@ export default function DashboardLayout({
   useEffect(() => {
     setIsMounted(true);
     // Check if user is authenticated
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/");
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        router.push("/");
+      }
     }
   }, [router]);
 
